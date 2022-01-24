@@ -71,17 +71,27 @@ const gameWinStates = () => {
         }
         if (player1.markPosition.length === 4) {
             const arr = [...player1.markPosition]
+            const arrs = [...player1.markPosition]
+            arrs.pop()
             arr.shift()
             if (equals(item, arr.sort())) {
                  winnerGame()
              }
+            if (equals(item, arrs.sort())) {
+                winnerGame
+            }
         }
         if (player2.markPosition.length === 4) {
             const arr = [...player2.markPosition]
+            const arrs = [...player2.markPosition]
+            arrs.pop()
             arr.shift()
             if (equals(item, arr.sort())) {
                  winnerGame()
              }
+            if (equals(item, arrs.sort())) {
+                winnerGame
+            }
         }
     }) 
 }
