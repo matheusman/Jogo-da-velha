@@ -63,10 +63,7 @@ const gameWinStates = () => {
         [2, 4, 6]
     ]
     win.forEach(item => {
-        if (equals(item, player1.markPosition.sort())) {
-            winnerGame()
-        }
-        if (equals(item, player2.markPosition.sort())) {
+        if (equals(item, player1.markPosition.sort()) || equals(item, player2.markPosition.sort())) {
             winnerGame()
         }
         if (player1.markPosition.length === 4) {
@@ -78,7 +75,7 @@ const gameWinStates = () => {
                  winnerGame()
              }
             if (equals(item, arrs.sort())) {
-                winnerGame()
+                winnerGame
             }
         }
         if (player2.markPosition.length === 4) {
