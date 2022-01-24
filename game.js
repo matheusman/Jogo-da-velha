@@ -29,17 +29,17 @@ const boxMarkGame = event => {
             player1.markPosition.push(box.id - 1)
             box.innerHTML = `<img src="${player1.Symbol}">`
             player1.jogar = false
-
+            gameWinStates(player1)
         } else {
             game.board[box.id - 1] = player2.Symbol
             player2.markPosition.push(box.id - 1)
             box.innerHTML = `<img src="${player2.Symbol}">`
             player1.jogar = true
+            gameWinStates(player2)
         }
     } else {
         return false
     }
-    gameWinStates()
     gameEmpateVelha()
 }
 
@@ -51,7 +51,7 @@ const gameEmpateVelha = () => {
     }
 }
 
-const gameWinStates = () => {
+const gameWinStates = (playerWin) => {
     const win = [
         [0, 1, 2],
         [3, 4, 5],
@@ -66,21 +66,9 @@ const gameWinStates = () => {
         if (equals(item, player1.markPosition.sort()) || equals(item, player2.markPosition.sort())) {
             winnerGame()
         }
-        if (player1.markPosition.length === 4) {
-            const arr = [...player1.markPosition]
-            const arrs = [...player1.markPosition]
-            arrs.pop()
-            arr.shift()
-            if (equals(item, arr.sort())) {
-                 winnerGame()
-             }
-            if (equals(item, arrs.sort())) {
-                winnerGame
-            }
-        }
-        if (player2.markPosition.length === 4) {
-            const arr = [...player2.markPosition]
-            const arrs = [...player2.markPosition]
+        if (playerWin.markPosition.length === 4) {
+            const arr = [...playerWin.markPosition]
+            const arrs = [...playerWin.markPosition]
             arrs.pop()
             arr.shift()
             if (equals(item, arr.sort())) {
