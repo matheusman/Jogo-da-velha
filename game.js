@@ -78,7 +78,7 @@ const gameWinStates = () => {
                  winnerGame()
              }
             if (equals(item, arrs.sort())) {
-                winnerGame
+                winnerGame()
             }
         }
         if (player2.markPosition.length === 4) {
@@ -90,7 +90,7 @@ const gameWinStates = () => {
                  winnerGame()
              }
             if (equals(item, arrs.sort())) {
-                winnerGame
+                winnerGame()
             }
         }
     }) 
