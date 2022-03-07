@@ -6,7 +6,7 @@ const player1 = {
     jogar: true,
     Symbol: './assets/x.png',
     markPosition: [],
-    markGameWins : 0
+    markGameWins: 0
 }
 
 const player2 = {
@@ -51,6 +51,10 @@ const gameEmpateVelha = () => {
     }
 }
 
+const removeIndex = (arr, index) => {
+    arr.slice(index)
+}
+
 const gameWinStates = (playerWin) => {
     const win = [
         [0, 1, 2],
@@ -66,19 +70,16 @@ const gameWinStates = (playerWin) => {
         if (equals(item, player1.markPosition.sort()) || equals(item, player2.markPosition.sort())) {
             winnerGame()
         }
-        if (playerWin.markPosition.length === 4) {
-            const arr = [...playerWin.markPosition]
-            const arrs = [...playerWin.markPosition]
-            arrs.pop()
-            arr.shift()
-            if (equals(item, arr.sort())) {
-                 winnerGame()
-             }
-            if (equals(item, arrs.sort())) {
+    })
+    for (let e = 0; e < playerWin.markPosition.length; e++) {
+        const arr = [...playerWin.markPosition]
+        arr.splice(e, 1)
+        win.forEach( item => {
+            if (equals(item, arr)) {
                 winnerGame()
             }
-        }
-    }) 
+        })
+    }
 }
 
 const winnerGame = () => {
@@ -90,7 +91,7 @@ const winnerGame = () => {
 const resetGameOver = () => {
     const gameOver = document.getElementById('GameOver')
     gameOver.style.display = 'none'
-    document.querySelectorAll('.box').forEach( boxs => boxs.innerHTML = '')
+    document.querySelectorAll('.box').forEach(boxs => boxs.innerHTML = '')
     game.board = ['', '', '', '', '', '', '', '', '']
     player1.markPosition = []
     player2.markPosition = []
